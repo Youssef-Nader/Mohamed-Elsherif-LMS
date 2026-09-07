@@ -4,6 +4,7 @@ import Footer from "../components/layout/Footer";
 import Icon from "../components/ui/Icon";
 // Shared page shell; only the device-local theme preference is persisted.
 export default function Layout({ children }) {
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [dark, setDark] = useState(() => {
     try {
       return localStorage.getItem("ms-theme") === "dark";
@@ -20,6 +21,13 @@ export default function Layout({ children }) {
       /* The theme works without storage. */
     }
   }, [dark]);
+  // Keep the return button quiet at the top and reveal it after meaningful scrolling.
+  useEffect(() => {
+    const update = () => setShowBackToTop(window.scrollY > 420);
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   return (
     <>
       <a className="skip-link" href="#main">
@@ -33,7 +41,7 @@ export default function Layout({ children }) {
       {/* Persistent contact and reduced-motion-aware return-to-top actions. */}
       <div className="floating-actions">
         <button
-          className="floating-action back-to-top"
+          className={`floating-action back-to-top${showBackToTop ? " is-visible" : ""}`}
           aria-label="العودة إلى أعلى الصفحة"
           onClick={() => {
             window.scrollTo({

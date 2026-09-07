@@ -1,0 +1,264 @@
+/* Header, navigation drawer, and fixed page actions */
+body {
+  padding-top: var(--header-height);
+  font-size: 16px;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 24px);
+}
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 5px 28px #233d5008;
+}
+
+.nav-shell {
+  height: var(--header-height);
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.nav-actions {
+  position: static;
+  display: flex;
+  gap: 21px;
+  margin-inline-start: auto;
+}
+
+.sidebar-toggle {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
+}
+
+.reading-progress {
+  position: absolute;
+  bottom: -1px;
+  inset-inline: 0;
+  height: 4px;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+  overflow: hidden;
+}
+
+.reading-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: linear-gradient(90deg, #66a3bf, #3368a0);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  width: min(370px, 92vw);
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateX(100%);
+  border: 0;
+  border-left: 1px solid var(--border);
+  box-shadow: -20px 0 55px #101c2824;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s ease;
+}
+
+.sidebar.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  min-height: 100%;
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  opacity: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: auto;
+}
+
+.sidebar-heading .brand strong {
+  font-size: 20px;
+}
+
+.sidebar-links {
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  min-height: 58px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    translate 0.2s;
+}
+
+.sidebar-links a svg {
+  flex: none;
+  color: var(--primary);
+  background: var(--soft);
+  border-radius: 9px;
+  padding: 5px;
+  box-sizing: content-box;
+}
+
+.sidebar-links a:hover,
+.sidebar-links a:focus-visible {
+  color: var(--deep);
+  background: var(--soft);
+  translate: -4px 0;
+}
+
+.sidebar-links a:hover svg,
+.sidebar-links a:focus-visible svg {
+  color: var(--bg);
+  background: var(--primary);
+}
+
+.sidebar-account {
+  margin-top: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.sidebar-account .button {
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+}
+
+.floating-actions {
+  position: fixed;
+  left: auto;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 19;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  animation: portrait-enter 0.6s ease both;
+}
+
+.floating-action {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--primary);
+  box-shadow: 0 6px 24px #233d5025;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.floating-action:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px #3368a040;
+}
+
+.whatsapp {
+  width: 62px;
+  height: 62px;
+  background: #3368a0;
+  color: #f2efe7;
+  border: 3px solid #c8dfdb;
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--bg) 85%, transparent),
+    0 8px 24px #233d5030;
+}
+
+.whatsapp svg {
+  width: 32px;
+  height: 32px;
+}
+
+.back-to-top {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(12px) scale(0.8);
+  pointer-events: none;
+  background: var(--bg);
+  border-color: #66a3bf;
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.back-to-top.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top:hover svg {
+  animation: word-float 1s ease infinite;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .nav-shell {
+    height: var(--header-height);
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-actions {
+    left: auto;
+    right: max(16px, env(safe-area-inset-right));
+  }
+
+  .whatsapp {
+    width: 56px;
+    height: 56px;
+  }
+
+  .whatsapp svg {
+    width: 29px;
+    height: 29px;
+  }
+}

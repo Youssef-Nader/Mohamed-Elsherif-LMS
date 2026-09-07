@@ -1,5 +1,9 @@
 // Central icon geometry keeps decorative SVGs consistent across components.
 const paths = {
+  home: "M3 11 12 3l9 8M5 10v10h14V10M9 20v-6h6v6",
+  layers: "m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 17l9 5 9-5",
+  "chevron-left": "m15 18-6-6 6-6",
+  "chevron-right": "m9 18 6-6-6-6",
   up: "M12 19V5m-6 6 6-6 6 6",
   whatsapp:
     "M20.5 11.6a8.5 8.5 0 0 1-12.7 7.5L3 20.5l1.4-4.7A8.5 8.5 0 1 1 20.5 11.6ZM8 7l2 3-1 1a9 9 0 0 0 4 4l1-1 3 1c-1 4-9 0-10-5Z",

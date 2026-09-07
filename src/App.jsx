@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LevelsPage from "./pages/LevelsPage";
 import CoursesPage from "./pages/CoursesPage";
+import ParentPage from "./pages/ParentPage";
 import { Link } from "./routes/Router";
 export default function App() {
   // Include query parameters so changing a level rerenders the catalog.
@@ -34,6 +35,8 @@ export default function App() {
       <LevelsPage />
     ) : path === "/courses" ? (
       <CoursesPage search={search} />
+    ) : ["/parent", "/parent/login"].includes(path) ? (
+      <ParentPage />
     ) : ["/register", "/signup"].includes(path) ? (
       <RegisterPage />
     ) : (

@@ -1,5 +1,7 @@
 import Icon from "../ui/Icon";
-// Contact actions and the existing external parent portal.
+import { Link } from "../../routes/Router";
+
+// Contact actions and the parent portal entry point.
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
@@ -10,14 +12,14 @@ export default function Contact() {
             تواصل معنا<span className="orange-dot">.</span>
           </h2>
           <p>محتاج مساعدة؟ تواصل معنا علطول على الأرقام التالية واتساب أو اتصال.</p>
-          <a
+          <Link
             className="button primary parent-contact"
-            href="https://www.mohamed-elsherief.online/parent/login"
+            to="/parent"
           >
             <Icon name="user" size={20} />
             دخول ولي الأمر
             <Icon name="arrow" size={20} />
-          </a>
+          </Link>
         </div>
         <div className="contact-cards">
           {["الحجز والاستفسارات", "الدعم الفني"].map((title, index) => (

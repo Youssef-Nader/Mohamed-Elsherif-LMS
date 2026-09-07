@@ -7,6 +7,7 @@ const links = [
   { to: "/", label: "الرئيسية" },
   { to: "/levels", label: "مستويات التعلم" },
   { to: "/courses", label: "الكورسات" },
+  { to: "/parent", label: "ولي الأمر" },
   { to: "/login", label: "تسجيل الدخول" },
 ];
 

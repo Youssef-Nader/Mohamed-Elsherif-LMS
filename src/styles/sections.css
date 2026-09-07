@@ -410,6 +410,9 @@
   margin-bottom: 0;
   max-width: 340px;
 }
+.parent-contact {
+  margin-top: 24px;
+}
 .contact-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;

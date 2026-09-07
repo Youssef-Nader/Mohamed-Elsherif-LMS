@@ -3,10 +3,6 @@
   --heading-font: "Alexandria", "IBM Plex Sans Arabic", sans-serif;
   --header-height: 88px;
 }
-body {
-  padding-top: var(--header-height);
-  font-size: 16px;
-}
 h1,
 h2,
 h3,
@@ -64,58 +60,6 @@ h3 {
 .catalog-note,
 .footer-bottom {
   font-size: 0.875rem;
-}
-.header {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 30;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 5px 28px #233d5008;
-}
-.nav-shell {
-  height: var(--header-height);
-}
-.reading-progress {
-  position: absolute;
-  bottom: -1px;
-  inset-inline: 0;
-  height: 4px;
-  background: color-mix(in srgb, var(--border) 45%, transparent);
-  overflow: hidden;
-}
-.reading-progress span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(0);
-  transform-origin: right;
-  background: linear-gradient(90deg, #66a3bf, #3368a0);
-}
-html {
-  scroll-padding-top: calc(var(--header-height) + 24px);
-}
-.floating-actions {
-  left: auto;
-  right: max(24px, env(safe-area-inset-right));
-}
-.whatsapp {
-  width: 62px;
-  height: 62px;
-  background: #3368a0;
-  color: #f2efe7;
-  border: 3px solid #c8dfdb;
-  box-shadow:
-    0 0 0 5px color-mix(in srgb, var(--bg) 85%, transparent),
-    0 8px 24px #233d5030;
-}
-.whatsapp svg {
-  width: 32px;
-  height: 32px;
-}
-.back-to-top {
-  background: var(--bg);
-  border-color: #66a3bf;
 }
 /* Two crossing ribbons, with a quiet center of gravity. */
 .skills-section {
@@ -659,9 +603,6 @@ html {
 }
 /* Responsive layout: (max-width: 800px) */
 @media (max-width: 800px) {
-  :root {
-    --header-height: 76px;
-  }
   .hero h1 {
     font-size: clamp(2.6rem, 7vw, 3.6rem);
   }
@@ -711,18 +652,6 @@ html {
 }
 /* Responsive layout: (max-width: 480px) */
 @media (max-width: 480px) {
-  .floating-actions {
-    left: auto;
-    right: max(16px, env(safe-area-inset-right));
-  }
-  .whatsapp {
-    width: 56px;
-    height: 56px;
-  }
-  .whatsapp svg {
-    width: 29px;
-    height: 29px;
-  }
   .hero-actions .button {
     font-size: 0.875rem;
     min-height: 50px;

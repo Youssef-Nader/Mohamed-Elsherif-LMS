@@ -1,7 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Alexandria:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+/* 1. Global tokens, resets, and shared primitives */
 @import "./styles/site.css";
+/* 2. Header, sidebar drawer, and fixed actions */
+@import "./styles/layout.css";
+/* 3. Homepage sections and shared content components */
 @import "./styles/sections.css";
+/* 4. Visual refresh for hero, skills, and motion */
 @import "./styles/refresh.css";
+/* 5. Final typography and page polish */
 @import "./styles/polish.css";
+/* 6. Courses and levels catalog pages */
 @import "./styles/catalog.css";
+/* 7. Parent dashboard page */
+@import "./styles/parent.css";
+/* 8. Footer */
 @import "./styles/footer.css";
