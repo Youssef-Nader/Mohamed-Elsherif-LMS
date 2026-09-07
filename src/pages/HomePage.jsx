@@ -1,22 +1,15 @@
-import { useState } from "react";
 import Hero from "../components/home/Hero";
-import AcademicStages from "../components/home/AcademicStages";
+import LearningLevels from "../components/home/LearningLevels";
 import AvailableCourses from "../components/home/AvailableCourses";
 import Benefits from "../components/home/Benefits";
 import Contact from "../components/home/Contact";
+// Page composition stays separate from reusable catalog behavior.
 export default function HomePage() {
-  const [active, setActive] = useState("all");
-  const [selected, setSelected] = useState(null);
   return (
     <>
       <Hero />
-      <AcademicStages onSelect={setActive} />
-      <AvailableCourses
-        active={active}
-        onFilter={setActive}
-        selected={selected}
-        onSelect={setSelected}
-      />
+      <LearningLevels />
+      <AvailableCourses />
       <Benefits />
       <Contact />
     </>

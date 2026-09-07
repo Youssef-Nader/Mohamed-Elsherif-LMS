@@ -1,0 +1,489 @@
+/* Header appearance and sidebar drawer */
+.header {
+  position: relative;
+  background: linear-gradient(110deg, var(--bg), var(--surface), var(--bg));
+}
+.nav-shell {
+  height: 88px;
+}
+.sidebar-toggle {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
+}
+.sidebar {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  padding: 0;
+  width: min(370px, 92vw);
+  height: 100dvh;
+  max-height: 100dvh;
+  max-width: 100%;
+  border: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: -20px 0 80px #101c2830;
+}
+.sidebar[open] {
+  animation: sidebar-enter 0.35s ease both;
+}
+.sidebar::backdrop {
+  background: #101c2870;
+  backdrop-filter: blur(5px);
+}
+html:has(.sidebar[open]) {
+  overflow: hidden;
+}
+.sidebar-content {
+  min-height: 100%;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sidebar-heading .brand strong {
+  font-size: 20px;
+}
+.sidebar-links {
+  display: grid;
+  gap: 8px;
+}
+.sidebar-links a {
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid var(--border);
+  transition:
+    background 0.2s,
+    translate 0.2s;
+}
+.sidebar-links a:hover {
+  background: var(--soft);
+  color: var(--deep);
+  translate: -4px 0;
+}
+.sidebar-account {
+  margin-top: auto;
+  display: grid;
+  gap: 12px;
+}
+/* Grayscale hero background and supplied portrait */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+.hero-background {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 660px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  z-index: -2;
+  opacity: 0.15;
+  filter: grayscale(1);
+  transform: rotate(-8deg) scale(1.15);
+  pointer-events: none;
+}
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--bg) 85%, transparent) 60%
+    ),
+    linear-gradient(0deg, var(--bg) 12%, transparent 65%);
+}
+.hero-grid {
+  gap: 45px;
+}
+.hero-copy {
+  min-width: 0;
+}
+.hero-art {
+  width: 100%;
+  max-width: 480px;
+  height: 620px;
+  transform: none;
+  margin-inline: auto;
+}
+.portrait-backdrop {
+  /* Animate the frame and its contents together as a single portrait. */
+  transform-origin: center;
+  animation: portrait-frame-sway 6s ease-in-out infinite;
+  inset: 22px 30px 35px;
+  width: auto;
+  height: auto;
+  transform: none;
+  border-radius: 190px 190px 40px 40px;
+  background: linear-gradient(145deg, #c8dfdb, #66a3bf);
+  border: 7px solid var(--bg);
+}
+.portrait-backdrop img {
+  width: 100%;
+  height: 98%;
+  inset: auto 0 0;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: none;
+  filter: none;
+  mix-blend-mode: normal;
+}
+.orbit-one {
+  width: 95%;
+  height: 85%;
+  left: 2.5%;
+  top: 25px;
+}
+.orbit-two {
+  width: 103%;
+  height: 93%;
+  left: -1.5%;
+  top: 4px;
+}
+.code-top {
+  top: 36px;
+  left: 0;
+}
+.code-bottom {
+  right: 0;
+  bottom: 14px;
+}
+.teacher-tag {
+  left: 0;
+  bottom: 90px;
+}
+.art-caption {
+  bottom: -14px;
+  left: 30px;
+}
+/* Animated skill ribbons */
+.skills-section {
+  position: relative;
+  padding-block: 25px 30px;
+  border-top: 1px solid var(--border);
+}
+.skills-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.skills-heading h2 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--deep);
+}
+.skills-heading h2 span {
+  display: inline-block;
+  animation: word-float 4s ease-in-out infinite;
+}
+.skills-heading h2 span:nth-child(2) {
+  animation-delay: -0.8s;
+  color: var(--primary);
+}
+.skills-heading h2 span:nth-child(3) {
+  animation-delay: -1.6s;
+}
+.skills-ribbons {
+  position: relative;
+  height: 185px;
+  margin-top: 20px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.skills-lane {
+  position: absolute;
+  top: 28px;
+  left: -3%;
+  width: 106%;
+  padding-block: 8px;
+  background: #3368a0;
+  transform: rotate(-3deg);
+  box-shadow: 0 8px 20px #233d5020;
+}
+.lane-1 {
+  top: 91px;
+  background: #c8dfdb;
+  transform: rotate(3deg);
+}
+.skills-track {
+  display: flex;
+  width: max-content;
+  animation: skills-scroll 45s linear infinite;
+}
+.lane-1 .skills-track {
+  animation-direction: reverse;
+  animation-duration: 52s;
+}
+.skills-group {
+  display: flex;
+  flex: none;
+  gap: 12px;
+  padding-right: 12px;
+}
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+  padding: 9px 22px;
+  border: 1px solid #66a3bf;
+  border-radius: 30px;
+  color: #f2efe7;
+  font:
+    500 16px/1.5 "Space Grotesk",
+    sans-serif;
+}
+.skill-chip > span {
+  color: #c8dfdb;
+}
+.lane-1 .skill-chip {
+  color: #233d50;
+  border-color: #66a3bf;
+}
+.lane-1 .skill-chip > span {
+  color: #3368a0;
+}
+.skills-section:hover .skills-track,
+.skills-section:focus-within .skills-track,
+.skills-section:hover h2 span,
+.skills-section:focus-within h2 span {
+  animation-play-state: paused;
+}
+.skills-section > a {
+  display: block;
+  width: 42px;
+  margin-inline: auto;
+  text-align: center;
+  font-size: 26px;
+  color: var(--primary);
+}
+/* Parent portal and fixed page actions */
+.parent-contact {
+  margin-top: 24px;
+}
+.floating-actions {
+  position: fixed;
+  left: max(22px, env(safe-area-inset-left));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 19;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  animation: portrait-enter 0.6s ease both;
+}
+.floating-action {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--primary);
+  box-shadow: 0 6px 24px #233d5025;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.floating-action:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px #3368a040;
+}
+.whatsapp {
+  width: 60px;
+  height: 60px;
+  background: #3368a0;
+  color: #f2efe7;
+  border-color: #66a3bf;
+}
+.back-to-top:hover svg {
+  animation: word-float 1s ease infinite;
+}
+.footer-bottom {
+  padding-bottom: 100px;
+}
+/* Animation: sidebar-enter */
+@keyframes sidebar-enter {
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Animation: skills-scroll */
+@keyframes skills-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* Animation: word-float */
+@keyframes word-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+/* Responsive layout: (max-width: 1100px) and (min-width: 801px) */
+@media (max-width: 1100px) and (min-width: 801px) {
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .hero-art {
+    height: 560px;
+  }
+  .floating-code code {
+    font-size: 11px;
+  }
+  .code-top {
+    padding: 10px 12px;
+  }
+}
+/* Responsive layout: (max-width: 800px) */
+@media (max-width: 800px) {
+  .hero-grid {
+    gap: 25px;
+  }
+  .hero-art {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 620px;
+  }
+  .hero-background {
+    height: 1050px;
+  }
+  .hero::before {
+    background: linear-gradient(
+      0deg,
+      var(--bg),
+      color-mix(in srgb, var(--bg) 55%, transparent)
+    );
+  }
+  .nav-shell {
+    height: 76px;
+  }
+}
+/* Responsive layout: (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-art {
+    width: 100%;
+    height: 535px;
+    margin-right: auto;
+    transform: none;
+  }
+  .portrait-backdrop {
+    inset: 25px 16px 40px;
+  }
+  .floating-code code {
+    font-size: 11px;
+  }
+  .code-top {
+    left: 0;
+    padding: 10px 12px;
+  }
+  .code-bottom {
+    bottom: 10px;
+    padding: 10px 12px;
+  }
+  .teacher-tag {
+    bottom: 85px;
+    padding: 9px 12px;
+  }
+  .teacher-tag strong {
+    font-size: 14px;
+  }
+  .spark-one {
+    right: 0;
+    font-size: 45px;
+  }
+  .art-caption {
+    bottom: -10px;
+    font-size: 8px;
+  }
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  .hero-promises {
+    flex-wrap: wrap;
+  }
+  .skills-heading h2 {
+    font-size: 26px;
+  }
+  .skill-chip {
+    font-size: 14px;
+    padding: 9px 15px;
+  }
+  .floating-actions {
+    left: 14px;
+    bottom: 14px;
+    gap: 9px;
+  }
+  .floating-action {
+    width: 45px;
+    height: 45px;
+  }
+  .whatsapp {
+    width: 52px;
+    height: 52px;
+  }
+}
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skills-ribbons {
+    height: auto;
+    mask-image: none;
+    overflow: visible;
+  }
+  .skills-lane {
+    position: static;
+    width: 100%;
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+  }
+  .skills-track {
+    width: 100%;
+  }
+  .skills-group {
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .skills-group[aria-hidden="true"],
+  .lane-1 {
+    display: none;
+  }
+  .skill-chip {
+    background: #3368a0;
+  }
+  .skills-heading .icon-button {
+    display: none;
+  }
+}

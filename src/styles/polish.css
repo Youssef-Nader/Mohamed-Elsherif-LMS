@@ -1,0 +1,813 @@
+/* Type and rhythm */
+:root {
+  --heading-font: "Alexandria", "IBM Plex Sans Arabic", sans-serif;
+  --header-height: 88px;
+}
+body {
+  padding-top: var(--header-height);
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+.brand strong {
+  font-family: var(--heading-font);
+  letter-spacing: -0.035em;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+.hero h1 {
+  font-size: clamp(2.7rem, 4.6vw, 4.3rem);
+  line-height: 1.6;
+  letter-spacing: -0.045em;
+}
+.hero-copy > p {
+  font-size: 1.125rem;
+  line-height: 1.95;
+}
+.eyebrow,
+.brand small,
+.hero-promises,
+.teacher-tag small,
+.code-bottom small {
+  font-size: 0.875rem;
+}
+.section-heading h2 {
+  font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+  line-height: 1.65;
+}
+.section-heading p,
+.benefit-card p,
+.course-body > p,
+.contact-layout > div > p {
+  font-size: 1rem;
+}
+.benefit-card h3,
+.course-body h3 {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+.course-filters button,
+.course-meta,
+.course-details,
+.course-category,
+.year-badge,
+.contact-card a.call-link {
+  font-size: 0.875rem;
+}
+.contact-card h3 {
+  font-size: 1rem;
+}
+.catalog-note,
+.footer-bottom {
+  font-size: 0.875rem;
+}
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 5px 28px #233d5008;
+}
+.nav-shell {
+  height: var(--header-height);
+}
+.reading-progress {
+  position: absolute;
+  bottom: -1px;
+  inset-inline: 0;
+  height: 4px;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+  overflow: hidden;
+}
+.reading-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: linear-gradient(90deg, #66a3bf, #3368a0);
+}
+html {
+  scroll-padding-top: calc(var(--header-height) + 24px);
+}
+.floating-actions {
+  left: auto;
+  right: max(24px, env(safe-area-inset-right));
+}
+.whatsapp {
+  width: 62px;
+  height: 62px;
+  background: #3368a0;
+  color: #f2efe7;
+  border: 3px solid #c8dfdb;
+  box-shadow:
+    0 0 0 5px color-mix(in srgb, var(--bg) 85%, transparent),
+    0 8px 24px #233d5030;
+}
+.whatsapp svg {
+  width: 32px;
+  height: 32px;
+}
+.back-to-top {
+  background: var(--bg);
+  border-color: #66a3bf;
+}
+/* Two crossing ribbons, with a quiet center of gravity. */
+.skills-section {
+  width: 100%;
+  padding: 45px 0 25px;
+  background: color-mix(in srgb, var(--soft) 25%, var(--bg));
+  border-bottom: 1px solid var(--border);
+}
+.skills-heading {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding-inline: 24px;
+}
+.skills-kicker {
+  font:
+    500 0.75rem/1.6 "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+.skills-heading h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+  line-height: 1.6;
+}
+.skills-heading h2 span:nth-child(2) {
+  color: var(--muted);
+}
+.skills-heading p {
+  font-size: 1rem;
+  margin: 0;
+}
+.skills-ribbons {
+  height: 205px;
+  margin-top: 24px;
+}
+.skills-lane {
+  top: 42px;
+  transform: rotate(-2.5deg);
+  padding-block: 12px;
+  border-block: 1px solid #66a3bf;
+}
+.lane-1 {
+  top: 111px;
+  transform: rotate(2.5deg);
+  background: #c8dfdb;
+}
+.skill-chip {
+  border: none;
+  border-radius: 0;
+  padding-inline: 25px;
+  font-size: 1.125rem;
+  gap: 35px;
+}
+.skills-track {
+  animation-duration: 55s;
+}
+.lane-1 .skills-track {
+  animation-duration: 63s;
+}
+.skills-section > a {
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  line-height: 36px;
+}
+.skills-section:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -3px;
+}
+/* Learning paths */
+.levels-grid {
+  align-items: stretch;
+  gap: 25px;
+  padding-top: 10px;
+}
+.learning-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--text);
+  transition:
+    transform 0.35s,
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+.learning-card-1 {
+  background: var(--soft);
+}
+.learning-card-2 {
+  background: #3368a0;
+  color: #f2efe7;
+  border-color: #3368a0;
+}
+.learning-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.learning-card-top > span:first-child {
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 30px;
+}
+.learning-number {
+  font:
+    500 2rem/1 "Space Grotesk",
+    sans-serif;
+  opacity: 0.65;
+}
+.learning-visual {
+  position: relative;
+  height: 175px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #233d50;
+}
+.learning-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #16324be6, #16324b15);
+}
+.learning-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition:
+    transform 0.65s,
+    filter 0.65s;
+}
+.learning-code {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 1;
+  color: #f2efe7;
+  font:
+    500 1.55rem "Space Grotesk",
+    monospace;
+  letter-spacing: -0.04em;
+}
+.learning-symbol {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #c8dfdb60;
+  border-radius: 14px;
+  color: #c8dfdb;
+  background: #3368a055;
+  backdrop-filter: blur(8px);
+}
+.learning-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+}
+.learning-content h3 {
+  font-size: clamp(1.1rem, 1.55vw, 1.35rem);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+.learning-content p {
+  font-size: 1rem;
+  margin-bottom: 26px;
+}
+.learning-card-2 p {
+  color: #c8dfdb;
+}
+.learning-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.learning-arrow {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--primary);
+  transition: transform 0.3s;
+}
+.learning-card-1 .learning-arrow {
+  background: var(--bg);
+}
+.learning-card-2 .learning-arrow {
+  background: #c8dfdb;
+  color: #3368a0;
+}
+.learning-card:hover,
+.learning-card:focus-visible {
+  transform: translateY(-8px);
+  border-color: #66a3bf;
+  box-shadow: 0 22px 45px #233d5015;
+}
+.learning-card:hover img,
+.learning-card:focus-visible img {
+  transform: scale(1.07);
+  filter: grayscale(0);
+}
+.learning-card:hover .learning-arrow {
+  transform: rotate(-35deg);
+}
+/* A welcoming workspace for account pages. */
+.auth-section {
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(35px, 6vw, 90px);
+  min-height: calc(100dvh - var(--header-height));
+  padding-block: 64px 80px;
+  align-items: center;
+}
+.auth-section::before {
+  content: "";
+  position: absolute;
+  inset: 40px -20px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 85% 35%,
+    color-mix(in srgb, var(--soft) 80%, transparent),
+    transparent 65%
+  );
+}
+.auth-intro {
+  min-width: 0;
+}
+.auth-intro h1 {
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
+  line-height: 1.7;
+  margin: 22px 0 14px;
+}
+.auth-intro > p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 30px;
+}
+.journey-terminal {
+  background: #172b3c;
+  border: 1px solid #66a3bf80;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 55px #233d501c;
+  transform: rotate(-2deg);
+  margin: 30px 0;
+  animation: portrait-enter 0.75s ease both;
+}
+.terminal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #66a3bf35;
+  background: #233d50;
+  color: #c8dfdb;
+  font:
+    0.8rem "Space Grotesk",
+    monospace;
+}
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #66a3bf;
+}
+.terminal-dots i:nth-child(2) {
+  background: #c8dfdb;
+}
+.terminal-dots i:nth-child(3) {
+  background: #f2efe7;
+}
+.terminal-code {
+  padding: 24px 18px;
+  overflow-x: auto;
+  color: #f2efe7;
+  font:
+    0.8rem/2.2 "Space Grotesk",
+    monospace;
+}
+.terminal-code > div {
+  display: flex;
+  white-space: nowrap;
+}
+.terminal-code code {
+  font: inherit;
+}
+.line-number {
+  flex: none;
+  width: 32px;
+  color: #8faab9;
+  user-select: none;
+}
+.syntax-comment {
+  color: #a8bfcb;
+}
+.syntax-keyword {
+  color: #8fc7ec;
+}
+.syntax-string {
+  color: #c8dfdb;
+}
+.syntax-function {
+  color: #a8d5f1;
+}
+.terminal-output {
+  display: flex;
+  gap: 15px;
+  padding: 18px 22px;
+  background: #c8dfdb;
+  color: #233d50;
+}
+.terminal-output > span {
+  color: #3368a0;
+  font-size: 26px;
+}
+.terminal-output small {
+  font:
+    600 0.7rem "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.12em;
+}
+.terminal-output p {
+  font-size: 0.95rem;
+  color: #233d50;
+  margin: 5px 0 0;
+}
+.terminal-output p span {
+  color: #3368a0;
+}
+.auth-journey {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.auth-journey > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.tiny-heart {
+  color: var(--primary);
+  font-size: 20px;
+}
+.auth-intro .text-link {
+  display: inline-flex;
+  padding-block: 8px;
+  font-size: 0.95rem;
+}
+.auth-card {
+  position: relative;
+  border-radius: 26px;
+  padding: 32px;
+  background: var(--card);
+  box-shadow: 0 24px 70px #233d5012;
+  border: 1px solid var(--border);
+  animation: portrait-enter 0.65s ease both;
+}
+.auth-mode {
+  display: flex;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 5px;
+  border-radius: 12px;
+  margin-bottom: 28px;
+}
+.auth-mode a {
+  flex: 1;
+  text-align: center;
+  border-radius: 8px;
+  padding: 11px 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.auth-mode a[aria-current="page"] {
+  background: var(--primary);
+  color: var(--bg);
+  box-shadow: 0 3px 12px #233d5014;
+  font-weight: 600;
+}
+.auth-mode a:hover {
+  color: var(--deep);
+  background: var(--soft);
+}
+.auth-icon {
+  border-radius: 16px;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 16px;
+  transform: rotate(-6deg);
+}
+.auth-card h2 {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.auth-card > p {
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+.auth-card form {
+  gap: 17px;
+}
+.auth-card label {
+  font-size: 0.9rem;
+  gap: 8px;
+}
+.auth-card input,
+.auth-card select {
+  height: 51px;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 11px 14px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.auth-card input::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+.auth-card input:focus,
+.auth-card select:focus {
+  border-color: #66a3bf;
+  box-shadow: 0 0 0 4px #66a3bf20;
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.password-field input {
+  padding-right: 52px;
+}
+.password-field button {
+  width: 42px;
+  height: 41px;
+}
+.auth-submit {
+  min-height: 54px;
+  border-radius: 11px;
+  font-size: 1rem;
+  margin-top: 7px;
+}
+.auth-card p.auth-switch {
+  font-size: 0.95rem;
+  margin-block: 24px 16px;
+}
+.auth-preview {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border);
+}
+.form-notice {
+  font-size: 0.9rem;
+}
+/* Equal-height cards trade emphasis on hover without changing the grid layout. */
+.levels-grid {
+  grid-auto-rows: 1fr;
+}
+.learning-card {
+  transform-origin: center;
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s,
+    border-color 0.3s;
+}
+@media (hover: hover) and (min-width: 801px) and (prefers-reduced-motion: no-preference) {
+  .levels-grid:has(.learning-card:hover) .learning-card:not(:hover) {
+    transform: scale(0.95);
+  }
+  .levels-grid .learning-card:hover {
+    transform: translateY(-8px) scale(1.035);
+    z-index: 1;
+  }
+}
+@media (min-width: 801px) and (prefers-reduced-motion: no-preference) {
+  .levels-grid:has(.learning-card:focus-visible) .learning-card:not(:focus-visible) {
+    transform: scale(0.95);
+  }
+  .levels-grid .learning-card:focus-visible {
+    transform: translateY(-8px) scale(1.035);
+  }
+}
+/* Responsive layout: (max-width: 1000px) */
+@media (max-width: 1000px) {
+  .learning-card {
+    padding: 18px;
+  }
+  .learning-content h3 {
+    font-size: 1.1rem;
+  }
+  .auth-section {
+    gap: 32px;
+  }
+  .auth-card {
+    padding: 25px;
+  }
+  .terminal-code {
+    font-size: 0.72rem;
+    padding-inline: 12px;
+  }
+}
+/* Responsive layout: (max-width: 800px) */
+@media (max-width: 800px) {
+  :root {
+    --header-height: 76px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 7vw, 3.6rem);
+  }
+  .levels-grid {
+    gap: 18px;
+  }
+  .learning-card {
+    padding: 22px;
+  }
+  .learning-visual {
+    height: 210px;
+  }
+  .learning-content h3 {
+    font-size: 1.35rem;
+  }
+  .auth-section {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    padding-block: 35px 55px;
+    gap: 28px;
+  }
+  .auth-intro h1 {
+    font-size: 2rem;
+    margin-top: 15px;
+  }
+  .auth-intro > p {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .journey-terminal {
+    display: none;
+  }
+  .auth-journey {
+    margin: 18px 0 8px;
+    gap: 9px;
+  }
+  .auth-card {
+    padding: 28px;
+  }
+  .auth-intro h1 br {
+    display: none;
+  }
+  .skills-kicker {
+    max-width: 260px;
+  }
+}
+/* Responsive layout: (max-width: 480px) */
+@media (max-width: 480px) {
+  .floating-actions {
+    left: auto;
+    right: max(16px, env(safe-area-inset-right));
+  }
+  .whatsapp {
+    width: 56px;
+    height: 56px;
+  }
+  .whatsapp svg {
+    width: 29px;
+    height: 29px;
+  }
+  .hero-actions .button {
+    font-size: 0.875rem;
+    min-height: 50px;
+  }
+  .hero-promises {
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+  .teacher-name {
+    font-size: 1.2rem;
+  }
+  .hero-copy > p {
+    font-size: 1rem;
+  }
+  .skills-heading h2 {
+    font-size: 1.8rem;
+  }
+  .skills-heading p {
+    max-width: 270px;
+  }
+  .skill-chip {
+    font-size: 1rem;
+    gap: 24px;
+  }
+  .skills-ribbons {
+    height: 180px;
+  }
+  .skills-lane {
+    top: 25px;
+  }
+  .lane-1 {
+    top: 94px;
+  }
+  .learning-visual {
+    height: 180px;
+  }
+  .learning-content h3 {
+    font-size: 1.2rem;
+  }
+  .auth-section {
+    width: calc(100% - 32px);
+  }
+  .auth-card {
+    padding: 23px 20px;
+    border-radius: 20px;
+  }
+  .auth-intro h1 {
+    font-size: 1.7rem;
+  }
+  .auth-intro .eyebrow {
+    font-size: 0.8rem;
+  }
+  .auth-journey {
+    font-size: 0.8rem;
+  }
+  .auth-mode a {
+    font-size: 0.875rem;
+  }
+  .course-filters button {
+    font-size: 0.875rem;
+  }
+}
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skills-ribbons {
+    height: auto;
+    padding: 15px 24px;
+  }
+  .skills-lane {
+    position: static;
+    background: transparent;
+    transform: none;
+    border: 0;
+    padding: 0;
+  }
+  .skill-chip {
+    border-radius: 30px;
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+  .skills-track {
+    animation: none;
+  }
+  .learning-card-1,
+  .journey-terminal {
+    transform: none;
+  }
+}

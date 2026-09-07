@@ -1,9 +1,5 @@
-export default function SectionHeading({
-  eyebrow,
-  title,
-  description,
-  children,
-}) {
+// Consistent section title with an optional trailing action or label.
+export default function SectionHeading({ eyebrow, title, description, children }) {
   return (
     <div className="section-heading">
       <div>

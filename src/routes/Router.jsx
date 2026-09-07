@@ -1,3 +1,4 @@
+// Preserve normal anchor behavior for modified clicks, hashes, and external links.
 export function Link({ to, children, onClick, ...props }) {
   return (
     <a
@@ -16,6 +17,7 @@ export function Link({ to, children, onClick, ...props }) {
           return;
         if (!to.startsWith("/") || to.includes("#")) return;
         event.preventDefault();
+        // Notify App after internal navigation, including query-only filter changes.
         window.history.pushState({}, "", to);
         window.dispatchEvent(new PopStateEvent("popstate"));
       }}

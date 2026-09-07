@@ -1,108 +1,11 @@
-.stages-grid,
+.levels-grid,
 .courses-grid,
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
-.stage-card {
-  position: relative;
-  height: 280px;
-  border-radius: 12px;
-  overflow: hidden;
-  color: white;
-  isolation: isolate;
-  transition:
-    transform 0.35s,
-    box-shadow 0.35s;
-}
-.stage-card > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.stage-card:hover > img,
-.stage-card:focus-visible > img {
-  transform: scale(1.09);
-}
-.stage-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px #60241e22;
-}
-.stage-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    #2c161c28 0%,
-    #3f1f1b59 32%,
-    #341b18ee 100%
-  );
-}
-.stage-card:nth-child(2) .stage-shade {
-  background: linear-gradient(180deg, #30191636, #371e1aef);
-}
-.stage-card:nth-child(3) .stage-shade {
-  background: linear-gradient(180deg, #201c2130, #261f20ee);
-}
-.stage-pill {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  background: #ffffff20;
-  border: 1px solid #ffffff40;
-  border-radius: 20px;
-  padding: 5px 12px;
-  font-size: 11px;
-  backdrop-filter: blur(8px);
-}
-.stage-number {
-  position: absolute;
-  top: 18px;
-  left: 22px;
-  font:
-    400 39px "Space Grotesk",
-    sans-serif;
-  color: #fff9;
-  letter-spacing: -2px;
-}
-.stage-content {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  left: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 10px;
-}
-.stage-content h3 {
-  font-size: 23px;
-  letter-spacing: -0.5px;
-  margin-bottom: 7px;
-}
-.stage-content p {
-  font-size: 12px;
-  color: #e9d9d3;
-  margin-bottom: 0;
-}
-.circle-arrow {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  border: 1px solid #ffffff70;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  transition:
-    background 0.25s,
-    color 0.25s;
-}
-.stage-card:hover .circle-arrow {
-  background: #fff;
-  color: #60241e;
-}
+/* Course catalog, cards, and filters */
 .courses-section {
   background: var(--surface);
   border-block: 1px solid var(--border);
@@ -180,7 +83,7 @@
   overflow: hidden;
   border: 0;
   padding: 0;
-  background: #302527;
+  background: #233d50;
   color: white;
   text-align: initial;
 }
@@ -197,23 +100,9 @@
 .course-image-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #20171240, transparent 40%, #241614b0);
+  background: linear-gradient(180deg, #16273540, transparent 40%, #162735b0);
 }
-.course-image-tag {
-  position: absolute;
-  top: 19px;
-  left: 18px;
-  font:
-    500 9px "Space Grotesk",
-    sans-serif;
-  letter-spacing: 1.5px;
-  border: 1px solid #ffffff60;
-  padding: 6px 8px;
-  border-radius: 4px;
-  background: #30212050;
-  backdrop-filter: blur(5px);
-}
-.course-play {
+/* .course-play {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -228,9 +117,9 @@
   backdrop-filter: blur(4px);
   padding-left: 3px;
   transition: background 0.2s;
-}
+} */
 .course-image:hover .course-play {
-  background: #95271dcc;
+  background: #3368a0cc;
 }
 .image-bottom-label {
   position: absolute;
@@ -243,10 +132,120 @@
   justify-content: space-between;
 }
 .image-bottom-label > span {
+  font: 24px "Space Grotesk",monospace;
+  color: #c8dfdb;
+}
+/* Homepage portraits sit above the clipped course artwork, like the supplied reference. */
+.course-card-instructor {
+  overflow: visible;
+  margin-top: 64px;
+}
+.course-card-instructor .course-image {
+  height: 260px;
+  overflow: visible;
+  background: transparent;
+  isolation: isolate;
+}
+.course-art-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: #3368a0;
+  z-index: -2;
+}
+.course-art-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: 0.22;
+}
+.course-card-instructor:nth-child(3n + 2) .course-art-background {
+  background: #66a3bf;
+}
+.course-card-instructor:nth-child(3n + 3) .course-art-background {
+  background: #c8dfdb;
+}
+.course-instructor {
+  position: absolute;
+  inset: 0;
+  /* Clip the lower body at the card edge while leaving room above the head. */
+  clip-path: inset(-110px -24px 0);
+  pointer-events: none;
+  z-index: -1;
+}
+.course-instructor img {
+  position: absolute;
+  top: -35px;
+  left: 12.5%;
+  width: 75%;
+  max-width: none;
+  height: auto;
+  transform-origin: center 65%;
+  filter: drop-shadow(0 8px 10px #16324b25);
+  transition: transform 0.3s ease-in-out;
+}
+.course-card-instructor .course-image-shade {
+  top: auto;
+  height: 65px;
+  background: linear-gradient(0deg, #16324bd9, transparent);
+  pointer-events: none;
+}
+.course-card-instructor .course-card-instructor .course-play {
+  top: auto;
+  bottom: 52px;
+  left: 18px;
+  transform: none;
+  background: #3368a0;
+}
+.course-card-instructor .course-body {
+  position: relative;
+  background: var(--card);
+  border-radius: 0 0 12px 12px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .course-card-instructor .course-image:hover .course-instructor img {
+    transform: translateY(-17px) scale(1.09);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .course-card-instructor .course-image:focus-visible .course-instructor img {
+    transform: translateY(-17px) scale(1.09);
+  }
+}
+@media (max-width: 480px) {
+  .course-card-instructor {
+    margin-top: 54px;
+  }
+  .course-card-instructor .course-image {
+    height: 260px;
+  }
+}
+/* Labels wrap independently of the image and cannot overlap the instructor. */
+.course-labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 14px;
+}
+.course-labels .course-category {
+  margin-bottom: 0;
+}
+.course-topic-tag {
+  max-width: 100%;
+  padding: 6px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--soft);
+  color: var(--deep);
   font:
-    24px "Space Grotesk",
-    monospace;
-  color: #edb393;
+    600 0.75rem/1.5 "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
 }
 .course-body {
   padding: 23px;
@@ -295,6 +294,7 @@
   font-size: 13px;
   font-weight: 600;
 }
+/* Learning benefit cards */
 .benefits-section > .section-heading {
   justify-content: center;
   text-align: center;
@@ -307,15 +307,40 @@
   gap: 18px;
 }
 .benefit-card {
+  --benefit-frame: #3368a0;
+  --benefit-fill: color-mix(in srgb, #c8dfdb 42%, var(--card));
+  --benefit-surface: var(--benefit-fill);
   padding: 28px 28px 25px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  border: 20px solid transparent;
+  border-radius: 22px;
   transition:
     background 0.3s,
     transform 0.3s,
     border-color 0.3s,
     color 0.3s;
-  background: var(--card);
+  /* An opaque inner layer preserves rounded corners on the shared gradient frame. */
+  background:
+    linear-gradient(var(--benefit-surface), var(--benefit-surface)) padding-box,
+    linear-gradient(135deg, #3368a0, #66a3bf) border-box;
+}
+/* Keep varied inner tints while all cards share the same two-color frame. */
+.benefit-card:nth-child(6n + 2) {
+  --benefit-fill: color-mix(in srgb, #66a3bf 18%, var(--card));
+}
+.benefit-card:nth-child(6n + 3) {
+  --benefit-fill: color-mix(in srgb, #3368a0 12%, var(--card));
+}
+.benefit-card:nth-child(6n + 4) {
+  --benefit-fill: color-mix(in srgb, #c8dfdb 58%, var(--card));
+}
+.benefit-card:nth-child(6n + 5) {
+  --benefit-fill: color-mix(in srgb, #66a3bf 28%, var(--card));
+}
+.benefit-card:nth-child(6n + 6) {
+  --benefit-fill: color-mix(in srgb, #f2efe7 8%, var(--card));
+}
+:root[data-theme="dark"] .benefit-card {
+  --benefit-fill: color-mix(in srgb, var(--benefit-frame) 12%, var(--card));
 }
 .benefit-top {
   display: flex;
@@ -351,20 +376,19 @@
   margin: 0;
 }
 .benefit-card:hover {
-  background: #95271d;
-  border-color: #95271d;
-  color: white;
+  --benefit-surface: color-mix(in srgb, var(--benefit-fill) 90%, var(--benefit-frame));
   transform: translateY(-5px) scale(1.015);
 }
 .benefit-card:hover p,
 .benefit-card:hover .benefit-top > span:last-child {
-  color: #f2dbd5;
+  color: var(--text);
 }
 .benefit-card:hover .benefit-icon {
-  background: #ffffff20;
-  color: #fff;
+  background: var(--primary);
+  color: var(--bg);
   transform: scale(1.12) rotate(-5deg);
 }
+/* Contact details and parent portal */
 .contact-section {
   background: var(--surface);
   padding-block: 62px;
@@ -425,19 +449,20 @@
   color: var(--muted);
   margin-top: 8px;
 }
+/* Native course detail dialog */
 .course-dialog {
-  width: min(560px, calc(100% - 30px));
+  width: min(900px, calc(100% - 32px));
   max-height: 90dvh;
-  overflow: auto;
+  overflow: hidden;
   padding: 0;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 24px;
   background: var(--card);
   color: var(--text);
   box-shadow: 0 30px 100px #0004;
 }
 .course-dialog::backdrop {
-  background: #1c1212b0;
+  background: #101c28b0;
   backdrop-filter: blur(5px);
 }
 .dialog-close {
@@ -447,20 +472,168 @@
   background: var(--card);
   z-index: 1;
 }
-.course-dialog > img {
+.course-dialog-scroll {
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+html:has(.course-dialog[open]) {
+  overflow: hidden;
+}
+.course-dialog[open] {
+  animation: portrait-enter 0.25s ease-out both;
+}
+.dialog-cover {
+  position: relative;
+  height: 210px;
+  background: #16324b;
+}
+.dialog-cover img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
+  opacity: 0.55;
+}
+.dialog-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #16324b, transparent);
+}
+.dialog-cover-copy {
+  position: absolute;
+  inset: auto 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #f2efe7;
+  z-index: 1;
+  font:
+    0.875rem "Space Grotesk",
+    sans-serif;
+}
+.dialog-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c8dfdb60;
+  background: #c8dfdb20;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+.dialog-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  padding-block: 20px;
+  margin-block: 20px 26px;
+  border-block: 1px solid var(--border);
+}
+.dialog-facts > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.dialog-facts svg,
+.dialog-facts strong {
+  color: var(--primary);
+}
+.syllabus-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.syllabus-heading h3 {
+  margin: 0;
+}
+.syllabus-heading > span {
+  font:
+    0.7rem "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.dialog-syllabus ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0;
+  gap: 12px;
+  margin: 0;
+}
+.dialog-syllabus li {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.topic-number {
+  color: var(--primary);
+  opacity: 0.7;
+  font:
+    500 1rem "Space Grotesk",
+    sans-serif;
+}
+.dialog-syllabus li svg {
+  margin-inline-start: auto;
+  flex: none;
+}
+.dialog-enroll {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.dialog-enroll .demo-note {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.875rem !important;
+}
+.dialog-enroll .button {
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .dialog-cover {
+    height: 150px;
+  }
+  .dialog-cover-copy {
+    inset-inline: 20px;
+    font-size: 0.7rem;
+  }
+  .dialog-syllabus ol {
+    grid-template-columns: 1fr;
+  }
+  .dialog-enroll {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .syllabus-heading > span {
+    display: none;
+  }
 }
 .dialog-body {
-  padding: 28px;
+  padding: 30px;
 }
 .dialog-body h2 {
-  font-size: 26px;
+  font-size: clamp(1.4rem, 3vw, 2rem);
   margin-block: 12px;
 }
 .dialog-body p {
-  font-size: 14px;
+  font-size: 16px;
 }
 .dialog-body h3 {
   font-size: 17px;
@@ -486,6 +659,7 @@
   border-radius: 7px;
   font-size: 12px !important;
 }
+/* Account form foundations */
 .auth-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -623,19 +797,11 @@
   text-align: center;
   color: var(--muted);
 }
+/* Responsive layout: (max-width: 1100px) */
 @media (max-width: 1100px) {
-  .stages-grid,
+  .levels-grid,
   .courses-grid {
     gap: 17px;
-  }
-  .stage-card {
-    height: 250px;
-  }
-  .stage-content {
-    inset-inline: 18px;
-  }
-  .stage-content h3 {
-    font-size: 20px;
   }
   .course-body {
     padding: 19px;
@@ -661,18 +827,10 @@
     gap: 50px;
   }
 }
+/* Responsive layout: (max-width: 800px) */
 @media (max-width: 800px) {
-  .stages-grid {
+  .levels-grid {
     grid-template-columns: 1fr;
-  }
-  .stage-card {
-    height: 230px;
-  }
-  .stage-content h3 {
-    font-size: 26px;
-  }
-  .stage-content p {
-    font-size: 14px;
   }
   .courses-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -730,6 +888,7 @@
     margin-top: 15px;
   }
 }
+/* Responsive layout: (max-width: 480px) */
 @media (max-width: 480px) {
   .courses-grid,
   .benefits-grid,

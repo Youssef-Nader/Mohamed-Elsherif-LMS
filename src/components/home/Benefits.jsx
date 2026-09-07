@@ -1,5 +1,6 @@
 import Icon from "../ui/Icon";
 import SectionHeading from "./SectionHeading";
+// Edit the benefit copy here without changing the card layout.
 const benefits = [
   [
     "code",
@@ -32,6 +33,7 @@ const benefits = [
     "خطة تعلم منظمة من الأساسيات للتطبيق، تناسب مرحلتك وتخلّيك مكمل.",
   ],
 ];
+// Render the shared learning benefits from the content list.
 export default function Benefits() {
   return (
     <section className="section container benefits-section" id="benefits">
@@ -39,7 +41,7 @@ export default function Benefits() {
         eyebrow="كل اللي تحتاجه، في مكان واحد"
         title={
           <>
-            تجربة تعلّم <span>على مقاسك.</span>
+            تجربة تعلّم <span>على المنصة.</span>
           </>
         }
         description="مش مجرد فيديوهات. دي رحلة كاملة من أول سؤال لأول إنجاز."

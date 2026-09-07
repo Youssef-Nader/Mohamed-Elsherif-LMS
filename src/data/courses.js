@@ -1,38 +1,11 @@
-export const stages = [
-  {
-    id: "first",
-    number: "01",
-    name: "الصف الأول الثانوي",
-    description: "أول خطوة في عالم البرمجة",
-    image: "laptop.jpg",
-    label: "ابدأ صح",
-  },
-  {
-    id: "second",
-    number: "02",
-    name: "الصف الثاني الثانوي",
-    description: "طوّر تفكيرك، ووسّع مهاراتك",
-    image: "code.jpg",
-    label: "طوّر مهاراتك",
-  },
-  {
-    id: "third",
-    number: "03",
-    name: "الصف الثالث الثانوي",
-    description: "استعد لخطوتك الجاية بثقة",
-    image: "team.jpg",
-    label: "جاهز للمستقبل",
-  },
-];
 // Preview catalog. Replace these records with the real course API before launch.
 export const courses = [
   {
     id: "python",
-    stage: "first",
+    level: "beginner",
     title: "أساسيات البرمجة بلغة Python",
     category: "البرمجة من الصفر",
-    description:
-      "ابدأ بالمتغيرات والشروط والحلقات، وطبّق اللي اتعلمته في مشروعك الأول.",
+    description: "ابدأ بالمتغيرات والشروط والحلقات، وطبّق اللي اتعلمته في مشروعك الأول.",
     image: "web.jpg",
     lessons: 12,
     hours: 8,
@@ -46,7 +19,7 @@ export const courses = [
   },
   {
     id: "web",
-    stage: "second",
+    level: "intermediate",
     title: "من أول سطر لأول موقع",
     category: "تطوير المواقع",
     description: "حوّل فكرتك لموقع تفاعلي باستخدام HTML وCSS وJavaScript.",
@@ -63,11 +36,10 @@ export const courses = [
   },
   {
     id: "ai",
-    stage: "third",
+    level: "advanced",
     title: "مدخلك لعالم الذكاء الاصطناعي",
     category: "الذكاء الاصطناعي",
-    description:
-      "افهم إزاي الآلة بتتعلم، واكتشف البيانات والنماذج بأمثلة بسيطة.",
+    description: "افهم إزاي الآلة بتتعلم، واكتشف البيانات والنماذج بأمثلة بسيطة.",
     image: "robot.jpg",
     lessons: 10,
     hours: 6,

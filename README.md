@@ -1,61 +1,87 @@
-# Mohamed Samir — LMS homepage
+﻿# Mohamed Samir - Learning platform
 
-Arabic-first React 19 / Vite site using the existing project dependencies.
+Arabic-first React / Vite frontend with a shared level-based course catalog.
 
-## Local development
+## Development
 
 ```sh
 npm install
 npm run dev
 npm run build
 npm run lint
+npm test
 ```
 
-## Structure
+## Routes
 
-- `src/components/home/`: Hero, AcademicStages, AvailableCourses, Benefits, Contact, shared SectionHeading.
-- `src/components/layout/`: shared Header, Brand, and Footer.
-- `src/components/auth/AuthForm.jsx`: shared login/registration form with native validation, password visibility, and matching-password checks.
-- `src/components/ui/Icon.jsx`: consistent accessible decorative SVG icons.
-- `src/layouts/Layout.jsx`: header/footer composition and persistent light/dark preference.
-- `src/pages/`: HomePage, LoginPage, RegisterPage.
-- `src/routes/Router.jsx`: same-origin history navigation; App handles route selection and browser back/forward.
-- `src/data/courses.js`: clearly marked preview courses and stage metadata.
-- `src/styles/`: base/layout and section styles, responsive rules, reduced-motion support.
-
-## Routes and interactions
-
-- `/`: homepage, with `#stages`, `#courses`, `#benefits`, and `#contact` sections.
+- `/`: homepage, level preview, three-course preview, benefits, and contact.
+- `/levels`: all learning levels.
+- `/courses`: complete catalog with level filters.
+- `/courses?level=beginner`: beginner courses only.
+- `/courses?level=intermediate`: intermediate courses only.
+- `/courses?level=advanced`: advanced courses only.
 - `/login`: login form.
 - `/register` and `/signup`: registration form.
-- Unknown paths show a useful 404 page.
-- Stage cards filter courses and move to the catalog. Filter buttons reset or change the stage. Course details open in a native modal with Escape support and focus containment.
-- Dark mode is stored as a device preference. No account information is stored or transmitted.
+- Other paths render a 404 page.
 
-## Design
+The query string is the source of truth for catalog filters. Refreshing, sharing a
+link, or using browser back/forward preserves the selection. Invalid level values
+fall back to all courses. Page navigation scrolls to the top; changing only the
+filter keeps the current scroll position.
 
-White light-mode background with the requested #60241E, #95271D, #B34A44, and #E77B49 palette. Dark mode uses warm charcoal surfaces and lighter copper text for contrast. The hero has opposing floating code panels and an animated portrait entrance. Stage/course images zoom on hover; benefits change background, text, icon size, and scale. Mobile layouts and reduced-motion preferences are supported.
+## Where to make changes
 
-## Content and launch boundaries
+- `src/data/levels.js`: level names, descriptions, images, icons, URL helpers,
+  and filtering. This also supplies registration options.
+- `src/data/courses.js`: course records. Each `level` must match an ID above.
+- `src/components/levels/LevelGrid.jsx`: shared level cards.
+- `src/components/courses/CourseCatalog.jsx`: filters, results, and dialog state.
+- `src/components/courses/CourseCard.jsx`: one course card.
+- `src/components/courses/CourseDialog.jsx`: course details and enrollment link.
+- `src/components/home/`: homepage sections and catalog preview wrappers.
+- `src/components/auth/AuthForm.jsx`: shared account fields and local validation.
+- `src/components/layout/`: brand, fixed header, sidebar, and footer.
+- `src/layouts/Layout.jsx`: page shell, theme preference, and floating actions.
+- `src/pages/`: route-specific composition.
+- `src/routes/Router.jsx`: internal links; `src/App.jsx` selects the page.
 
-This deliverable is the requested frontend homepage with account routes, not a backend LMS. Sample course names, counts, and syllabuses are visibly marked as preview content. Replace `src/data/courses.js` with verified catalog data or an API before launch. Authentication forms validate inputs but explicitly report that account services are not connected; no account is created and no login is simulated.
+To add a level, add its definition in `levels.js`, then assign its ID to course
+records. The cards, URL filters, and signup options consume this shared definition.
+To add a course, add a record in `courses.js`; the full catalog includes it
+immediately. The homepage remains limited to its first three records.
 
-The portrait and verified contact number come from the supplied Mohamed Samir reference. Contact actions use WhatsApp and telephone links. Existing parent portal, terms, privacy, and developer-credit destinations are preserved as external links. Google Fonts supplies IBM Plex Sans Arabic and Space Grotesk with system fallbacks. Course/stage photographs are bundled locally from Unsplash.
+## Styles and formatting
 
-## Reference review
+CSS imports in `src/index.css` intentionally retain their existing cascade order:
 
-- https://www.mohamed-elsherief.online/ — Mohamed Samir programming/AI content, portrait, code motifs, contact/footer destinations.
-- https://khaled-sakr.com/ — bold instructor introduction and approachable learning benefits.
-- https://www.gamal-elshafey.online/ — floating subject elements and six-feature structure.
-- https://fakr-edu.online/ — spacious teacher-led hero and straightforward hierarchy.
-- https://basmath.online/ — orbiting subject motifs and clear stage/course flow.
+1. `site.css`: tokens, resets, layout foundations, and common components.
+2. `sections.css`: course, benefit, contact, dialog, and account foundations.
+3. `refresh.css`: sidebar, hero portrait, ribbons, and floating actions.
+4. `polish.css`: typography, fixed header, level cards, and account presentation.
+5. `catalog.css`: dedicated catalog pages, filter links, and preview CTAs.
 
-All five references were opened and reviewed. Course feeds on the references showed loading states during inspection, so their catalog data was not copied. No separate design.md was present; the supplied design outline guided implementation.
+Each declaration is on its own line. Section comments identify related styles,
+responsive rules, and motion preferences. Modify existing component rules rather
+than appending another override layer. `.prettierrc.json` records the formatting
+conventions for editor integrations. Component comments explain responsibility,
+state behavior, and major UI sections rather than narrating each line.
 
-## Hosting
+The palette is #3368A0, #66A3BF, #C8DFDB, and #F2EFE7. Dark mode uses compatible
+surfaces. The page respects reduced-motion settings. Fonts have local fallbacks.
 
-Production output is `dist/`, configured in `.openai/hosting.json`. A static host must provide SPA fallback to `index.html` for direct `/login` and `/register` navigation (Cloudflare static assets supports this SPA pattern when no top-level 404.html is emitted).
+## Preview boundaries and hosting
 
-## Validation
+Courses are sample content. Account forms validate inputs but do not create an
+account or authenticate anyone; they clearly report this limitation. No account
+information is saved or transmitted. Contact and parent portal links retain their
+existing destinations.
 
-Production build and ESLint checks pass. The development server returns HTTP 200. Browser visual/interaction QA was not run for the new site; the browser review covered the requested reference sites.
+The production output is `dist/`, as configured in `.openai/hosting.json`.
+The static host must serve `index.html` for application routes including `/levels`
+and `/courses`, so direct visits and refreshes work.
+
+## Checks
+
+`npm test` checks that every level URL resolves to only its matching courses,
+unknown query values fall back safely, and catalog identifiers are consistent.
+Use `npm run build` and `npm run lint` after changing application code.
